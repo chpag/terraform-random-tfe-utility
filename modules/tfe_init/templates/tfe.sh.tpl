@@ -160,6 +160,7 @@ docker login -u="${registry_username}" -p="${registry_password}" quay.io
 
 export HOST_IP=$(hostname -i)
 
+mkdir -p /etc/tfe
 cat > /etc/tfe/compose.yaml <<EOF
 ${compose}
 EOF
