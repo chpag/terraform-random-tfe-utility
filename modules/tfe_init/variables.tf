@@ -103,3 +103,15 @@ variable "registry_password" {
   description = "The password for the docker registry from which to pull the terraform_enterprise container images."
   type        = string
 }
+
+variable "fqdn" {
+  default     = null
+  description = "The fqdn of the server"
+  type        = string
+}
+
+variable "letsencrypt_email" {
+  default     = null
+  description = "The email address for letsencrypt CA cert"
+  type        = string
+}
