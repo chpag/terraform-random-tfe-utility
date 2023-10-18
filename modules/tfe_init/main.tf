@@ -36,5 +36,6 @@ locals {
 
       registry_username = var.registry_username
       registry_password = var.registry_password
+      letsencrypt_email=var.letsencrypt_email
   })
 }
