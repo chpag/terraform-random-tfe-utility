@@ -109,9 +109,3 @@ variable "fqdn" {
   description = "The fqdn of the server"
   type        = string
 }
-
-variable "letsencrypt_email" {
-  default     = null
-  description = "The email address for letsencrypt CA cert"
-  type        = string
-}
