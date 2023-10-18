@@ -96,6 +96,14 @@ update-ca-trust
 %{ else ~}
 update-ca-certificates
 %{ endif ~}
+else
+echo "[$(date +"%FT%T")] [Terraform Enterprise] Try to generate LetsEncrypt Certificate" | tee -a $log_pathname
+%{if letsencrypt_email != "" && fqdn != "" ~}
+sudo snap install --classic certbot | tee -a /var/log/ptfe.log
+certbot certonly --preferred-chain "ISRG Root X1" --standalone --agree-tos --non-interactive --email "${letsencrypt_email}" --domain ${fqdn} | tee -a /var/log/ptfe.log
+%{ else ~}
+echo "[$(date +"%FT%T")] [Terraform Enterprise] No LetsEncrypt Email then do nothing" | tee -a $log_pathname
+%{ endif ~}
 fi
 
 %{ if cloud == "azurerm" && distribution == "rhel" ~}
